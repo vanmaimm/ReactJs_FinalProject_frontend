@@ -3,7 +3,7 @@ import './css/LoginForm.css';
 import history from '../history';
 import { Link } from 'react-router-dom';
 
-class LoginForm extends Component{
+class Profile extends Component{
     onLogin(event){
         event.preventDefault();
         let username = event.target["username"].value;
@@ -34,21 +34,31 @@ class LoginForm extends Component{
     render(){
 
         return(
-            <div className="loginbox">
-                <img src="/Image/user.png" class="avatar"/>
-                <h1>Login Here</h1>
-                <form onSubmit = {this.onLogin}>
-                    <p>Username</p>
-                    <input type="text" name="username" placeholder="Enter Username"/>
-                    <p>Password</p>
-                    <input type="password" name="password" placeholder="Enter Password"/>
-                    <input type="submit"  name="" value="Login"/>
-                    <a href="#">Lost your password?</a><br/>
-                    <Link to="/signin">Đăng ký tại đây!</Link>
-                </form>
+            <div>
+               <table>
+                   <tr>
+                       <td>Họ và tên</td>
+                       <td></td>
+                   </tr>
+                   <tr>
+                       <td>Địa chỉ</td>
+                       <td></td>
+                   </tr>
+                   <tr>
+                       <td>Số điện thoại</td>
+                       <td></td>
+                   </tr>
+                   <tr>
+                       <td>Email</td>
+                       <td></td>
+                   </tr>
+                   <tr>
+                       <td> <button><Link to="/change-password" exact>Thay đổi mật khẩu!</Link></button> </td>
+                   </tr>
+               </table>
             </div>
         )
     }
 }
 
-export default LoginForm;
+export default Profile;

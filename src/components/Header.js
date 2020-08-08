@@ -1,8 +1,10 @@
 import React, { Component } from "react";
-import "./Header.css";
+import "./css/Header.css";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import LoginForm from "./LoginForm.js";
 import SignInForm from "./SignInForm.js";
+import Profile from "./Profile.js";
+import ChangePassword from "./ChangePassword.js";
 import history from "../history";
 
 class Header extends Component {
@@ -76,7 +78,7 @@ class Header extends Component {
                       <button onClick={this.logout}>Logout</button>
                     </li>
                     <li className="li" id="login">
-                      <h5>Welcome {item.username}</h5>
+                    <button><Link to="/profile">Hello {item.username}</Link></button> 
                     </li>
                   </div>
                 )}
@@ -91,7 +93,13 @@ class Header extends Component {
           <Route path="/signin">
             <SignInForm />
           </Route>
-
+          <Route path="/profile">
+            <Profile />
+          </Route>
+          <Route path="/change-password">
+            <ChangePassword />
+          </Route>
+            
         </Switch>
       </Router>
     );
