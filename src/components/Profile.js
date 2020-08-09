@@ -1,56 +1,54 @@
 import React,{Component} from 'react';
-import './css/LoginForm.css';
+import './css/Profile.css';
 import history from '../history';
 import { Link } from 'react-router-dom';
 
 class Profile extends Component{
-    onLogin(event){
-        event.preventDefault();
-        let username = event.target["username"].value;
-        let password = event.target["password"].value;
-        let user = {
-            username:username,
-            password:password,
-        }
-        
-        let userInJson = JSON.stringify(user);
-     //   console.log(userInJson);
-        fetch("http://127.0.0.1:8000/api/auth/login", {
-            method: "post",
-            headers: {
-                "Content-Type":"application/json"
-            },
-            body: userInJson
-        })
-        .then((response) => {
+    constructor() {
+        super();
+        var user_id = localStorage.getItem("user");
+        this.state = {
+          id: user_id,
+          user: [],
+        };
+        this.getUserById(user_id);
+      }
+    
+      getUserById(id) {
+        fetch("http://127.0.0.1:8000/api/profile", {
+          headers: {
+              "Authorization":id
+          },
+      })
+          .then((response) => {
             return response.json();
-        }).then((response) => {
-            console.log(response);
-            localStorage.setItem("user",response.user_id);
-        });
-        history.push('/');
-    }
+          })
+          .then((response) => {
+           //   console.log(response.user.user_infor.name);
+           this.setState({ user: response.user.user_infor });
+          });
+      }
 
     render(){
-
+       let acc= this.state.user;
         return(
             <div>
                <table>
                    <tr>
                        <td>Họ và tên</td>
-                       <td></td>
+                       <td> {acc.name}</td>
                    </tr>
                    <tr>
                        <td>Địa chỉ</td>
-                       <td></td>
+        <td>{acc.address}</td>
                    </tr>
                    <tr>
                        <td>Số điện thoại</td>
-                       <td></td>
+        <td>{acc.phone_number}</td>
                    </tr>
                    <tr>
                        <td>Email</td>
-                       <td></td>
+        <td>{acc.email}</td>
                    </tr>
                    <tr>
                        <td> <button><Link to="/change-password" exact>Thay đổi mật khẩu!</Link></button> </td>

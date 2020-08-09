@@ -6,34 +6,33 @@ import { Link } from 'react-router-dom';
 class ChangePassword extends Component{
     ChangePassword(event){
         event.preventDefault();
-        let old = event.target["newPassword"].value;
-        let newPassword = event.target["oldPassword"].value;
+        let oldPass = event.target["oldPassword"].value;
+        let newPass = event.target["newPassword"].value;
         let confirm = event.target["confirmPassword"].value;
-
-        if(newPassword!= confirm){
+        let user_id = localStorage.getItem("user");
+        if(newPass!= confirm){
             alert("Mật khẩu xác nhận sai");
+        }else{
+            let infor = {
+                id:user_id,
+                oldPass:oldPass,
+                newPass: newPass
+            }
+            let inforInJson = JSON.stringify(infor);
+            fetch("http://127.0.0.1:8000/api/checkPass", {
+                method: "post",
+                headers: {
+                    "Content-Type":"application/json"
+                },
+                body: inforInJson
+            })
+            .then((response) => {
+                return response.json();
+            }).then((response) => {
+                console.log(response);
+               // localStorage.setItem("user",response.user_id);
+            });
         }
-    //     let user = {
-    //         username:username,
-    //         password:password,
-    //     }
-        
-    //     let userInJson = JSON.stringify(user);
-    //  //   console.log(userInJson);
-    //     fetch("http://127.0.0.1:8000/api/auth/login", {
-    //         method: "post",
-    //         headers: {
-    //             "Content-Type":"application/json"
-    //         },
-    //         body: userInJson
-    //     })
-    //     .then((response) => {
-    //         return response.json();
-    //     }).then((response) => {
-    //         console.log(response);
-    //         localStorage.setItem("user",response.user_id);
-    //     });
-    //     history.push('/');
     }
 
     render(){
@@ -45,9 +44,8 @@ class ChangePassword extends Component{
                     <p>Mật khẩu cũ</p>
                     <input type="password" name="oldPassword" placeholder="Enter old password"/>
                     <p>Nhập mật khẩu mới</p>
-                    <input type="password" name="newPassword" placeholder="Enter Password"/>
-                    <p>Nhập lại mật khẩu mới</p>
-                    <input type="password" name="confirmPassword" placeholder="Enter Password"/>
+                    <input type="password" name="newPassword" placeholder="New Password"/>
+                    <input type="password" name="confirmPassword" placeholder=" Confirm Password"/>
                     <input type="submit"  name="" value="Thay đổi"/>
                 </form>
             </div>

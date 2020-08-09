@@ -1,9 +1,12 @@
 import React,{Component} from 'react';
 import './css/LoginForm.css';
-import history from '../history';
-import { Link } from 'react-router-dom';
+import { Link , withRouter} from 'react-router-dom';
 
 class LoginForm extends Component{
+    constructor(){
+        super();
+        this.onLogin = this.onLogin.bind(this);
+    }
     onLogin(event){
         event.preventDefault();
         let username = event.target["username"].value;
@@ -27,8 +30,10 @@ class LoginForm extends Component{
         }).then((response) => {
             console.log(response);
             localStorage.setItem("user",response.user_id);
+            alert("Ban da dang nhap thanh cong!");
+            this.props.history.push('/');
         });
-        history.push('/');
+       
     }
 
     render(){
@@ -51,4 +56,4 @@ class LoginForm extends Component{
     }
 }
 
-export default LoginForm;
+export default withRouter( LoginForm);

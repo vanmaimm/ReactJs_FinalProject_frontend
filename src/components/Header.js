@@ -5,7 +5,8 @@ import LoginForm from "./LoginForm.js";
 import SignInForm from "./SignInForm.js";
 import Profile from "./Profile.js";
 import ChangePassword from "./ChangePassword.js";
-import history from "../history";
+import Home from "./Home";
+
 
 class Header extends Component {
 
@@ -42,7 +43,7 @@ class Header extends Component {
     let item = this.state.account;
     console.log(item);
     return (
-      <Router history={history}>
+      <Router >
         <div className="Header">
           <div class="wrapper">
             <nav class="menu">
@@ -87,6 +88,9 @@ class Header extends Component {
           </div>
         </div>
         <Switch>
+          <Route path="/" exact>
+            <Home/>
+          </Route>
           <Route path="/login">
             <LoginForm />
           </Route>
@@ -99,8 +103,10 @@ class Header extends Component {
           <Route path="/change-password">
             <ChangePassword />
           </Route>
-            
         </Switch>
+        <div className="footer">
+         sdfghfhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhddhsssssssssssdhhhhhhhhhhhhh
+        </div>
       </Router>
     );
   }

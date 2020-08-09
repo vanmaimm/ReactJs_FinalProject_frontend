@@ -1,7 +1,6 @@
 import React,{Component} from 'react';
 import './css/SignInForm.css';
-import history from '../history';
-import { Link } from 'react-router-dom';
+import { Link,withRouter } from 'react-router-dom';
 
 class SignInForm extends Component{
     onSignin(event){
@@ -37,7 +36,7 @@ class SignInForm extends Component{
             console.log(response);
             localStorage.setItem("user",response.user_id);
         });
-        history.push('/');
+        this.props.history.push('/profile');
     }
 
     render(){
@@ -68,4 +67,4 @@ class SignInForm extends Component{
     }
 }
 
-export default SignInForm;
+export default withRouter(SignInForm);
