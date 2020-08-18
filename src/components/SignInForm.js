@@ -3,6 +3,10 @@ import './css/SignInForm.css';
 import { Link,withRouter } from 'react-router-dom';
 
 class SignInForm extends Component{
+    constructor(){
+        super();
+        this.onSignin=this.onSignin.bind(this);
+    }
     onSignin(event){
         event.preventDefault();
         let username = event.target["username"].value;
@@ -36,15 +40,14 @@ class SignInForm extends Component{
             console.log(response);
             localStorage.setItem("user",response.user_id);
         });
-        this.props.history.push('/profile');
+       this.props.history.push('/');
     }
 
     render(){
 
         return(
             <div className="signinbox">
-                <img src="/Image/user.png" class="avatar"/>
-                <h1>Login Here</h1>
+                <h1>Đăng ký tại đây</h1>
                 <form onSubmit = {this.onSignin}>
                     <p>Username</p>
                     <input type="text" name="username" placeholder="Enter Username" required/>

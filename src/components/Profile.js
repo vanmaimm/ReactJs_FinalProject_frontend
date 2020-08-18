@@ -47,8 +47,8 @@ class Profile extends Component{
         <td>{acc.phone_number}</td>
                    </tr>
                    <tr>
-                       <td>Email</td>
-        <td>{acc.email}</td>
+                       {/* <td>Email</td>
+        <td>{acc.email}</td> */}
                    </tr>
                    <tr>
                        <td> <button><Link to="/change-password" exact>Thay đổi mật khẩu!</Link></button> </td>

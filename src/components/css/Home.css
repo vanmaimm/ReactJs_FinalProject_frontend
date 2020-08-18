@@ -15,4 +15,18 @@
     height: 100%;
     margin: auto;
 }
-
+.search form, label, input{
+    margin: 10px;
+}
+.infor{
+    width: 80%;
+    display: flex;
+    margin: auto;
+}
+.infor div{
+    margin:10px
+}
+.infor img{
+    width: 50%;
+    height: auto;
+}

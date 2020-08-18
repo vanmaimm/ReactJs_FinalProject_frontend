@@ -1,0 +1,31 @@
+.typeroom {
+    display: flex; 
+    width: 100%;
+}
+.typeroom div{
+    margin: auto;
+}
+.typeroom>div>img{
+    width: 400px;
+    height: 200px;
+}
+.title h1{
+    color:rgb(56, 16, 16);
+    font-size: 70px;
+    font-family: cursive;
+}
+.flex{
+    display: flex;
+    width: 100%;
+}
+.flex>div{
+   
+    border-right: solid 1px black;
+}
+.flex div{
+    margin:auto;
+    padding:20px;
+}
+.typeroom{
+    border-bottom: solid 1px black;
+}

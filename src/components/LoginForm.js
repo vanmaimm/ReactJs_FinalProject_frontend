@@ -40,7 +40,7 @@ class LoginForm extends Component{
 
         return(
             <div className="loginbox">
-                <img src="/Image/user.png" class="avatar"/>
+                
                 <h1>Login Here</h1>
                 <form onSubmit = {this.onLogin}>
                     <p>Username</p>

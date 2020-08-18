@@ -13,7 +13,7 @@ class ChangePassword extends Component{
         if(newPass!= confirm){
             alert("Mật khẩu xác nhận sai");
         }else{
-            let infor = {
+            let infor = { 
                 id:user_id,
                 oldPass:oldPass,
                 newPass: newPass
@@ -23,14 +23,17 @@ class ChangePassword extends Component{
                 method: "post",
                 headers: {
                     "Content-Type":"application/json"
-                },
+                }, 
                 body: inforInJson
             })
             .then((response) => {
                 return response.json();
-            }).then((response) => {
-                console.log(response);
-               // localStorage.setItem("user",response.user_id);
+            }).then((response) => { 
+              if(response==400){
+                  alert("Mật khẩu cũ sai!");
+              }else{
+                  alert("Bạn đã thay đổi mật khẩu thành công");
+              }
             });
         }
     }

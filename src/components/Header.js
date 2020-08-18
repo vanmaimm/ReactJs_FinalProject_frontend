@@ -5,7 +5,10 @@ import LoginForm from "./LoginForm.js";
 import SignInForm from "./SignInForm.js";
 import Profile from "./Profile.js";
 import ChangePassword from "./ChangePassword.js";
+import TyperoomDetail from "./TyperoomDetail.js";
+import Booking from "./Booking";
 import Home from "./Home";
+import News from "./News";
 
 
 class Header extends Component {
@@ -16,6 +19,7 @@ class Header extends Component {
     this.state = {
       id: user_id,
       account: [],
+      typerooms:[]
     };
     this.getUserById(user_id);
     this.logout = this.logout.bind(this);
@@ -38,10 +42,23 @@ class Header extends Component {
     localStorage.removeItem("user");
     this.setState({ id: null });
   }
-
+  componentDidMount(){
+    fetch("http://127.0.0.1:8000/api/typeroom", {
+      headers: {
+        "Content-Type":"application/json"
+    },
+  })
+      .then((response) => {
+        return response.json();
+      })
+      .then((response) => {
+        console.log(response);
+        this.setState({ typerooms: response });
+      });
+  }
   render() {
     let item = this.state.account;
-    console.log(item);
+    console.log(this.state.typerooms);
     return (
       <Router >
         <div className="Header">
@@ -53,13 +70,13 @@ class Header extends Component {
                     Trang chủ
                   </Link>
                 </li>
-                <li>
-                <Link to="/standard-room">Phòng Standard</Link></li>
-                <li> <Link to="/superior-room">Phòng superior</Link></li>
-                <li><Link to="/deluxe-room">Phòng deluxe</Link></li>
-                <li>
-                  <Link to="/news">Tin tức</Link>
-                </li>
+              {
+                this.state.typerooms.map((typeroom,i)=>
+                <li> <a href={"/chi-tiet/"+typeroom.id} >  {typeroom.name}</a></li>
+                )}
+                {/* <li>
+                  <Link to="/news"></Link>
+                </li> */}
                 <li>
                   <Link to="/contact">Liên hệ</Link>
                 </li>
@@ -83,6 +100,9 @@ class Header extends Component {
                     </li>
                   </div>
                 )}
+                 <li>
+                  <Link to="/dat-phong">Đặt phòng</Link>
+                </li>
               </ul>
             </nav>
           </div>
@@ -103,11 +123,34 @@ class Header extends Component {
           <Route path="/change-password">
             <ChangePassword />
           </Route>
+          <Route path="/chi-tiet/:typeroom_id">
+            <TyperoomDetail />
+          </Route>
+          <Route path="/dat-phong">
+            <Booking />
+          </Route>
+          <Route path="/news">
+            <News />
+          </Route>
         </Switch>
-        <div className="footer">
-         sdfghfhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhddhsssssssssssdhhhhhhhhhhhhh
+        <div className='footer'>
+        <div className="content_footer">
+        <div>
+          <h3>Về chúng tôi</h3>
+          <p>Khách sạn Vian Hotel với tiêu chuẩn 3 sao, công suất thiết kế 30 phòng, thang máy mạ vàng vip, gồm 2 sảnh đón khách, đạt chuẩn cùng đội ngũ nhân viên bản địa giàu kinh nghiệm ở vị trí đắc địa giữa trung tâm thành phố Đà Nẵng.</p>
+        </div>
+        <div>
+          <h3>Liên hệ</h3>
+          <p>Email: vianhotel@gmail.com</p>
+          <br></br>
+          <p>Phone: 1234567879</p>
+          <br></br>
+          <p>Địa chỉ: 99 Tô Hiến Thành, Đà Nẵng</p>
+        </div>
+        </div>
         </div>
       </Router>
+      
     );
   }
 }

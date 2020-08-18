@@ -27,12 +27,12 @@
 }
 .menu a {
     transition:all linear 0.15s;
-    color:#0e7af7;
+    color:#5a0e0c;
     text-decoration:none;
 }
 .menu .current-item > a {
     text-decoration:none;
-    color:#0935f8;
+    color:rgb(56, 16, 16);
     background:#e2dbdc;
 } 
 .menu .arrow {
@@ -49,7 +49,7 @@
 .menu > ul > li > a {
     padding:10px 40px;
     display:inline-block;
-    color:#0e7af7;;
+    color:#5a0e0c;
 }
 .menu > ul > li >a:hover  {
    color: #0c2038;
@@ -65,15 +65,33 @@
     padding-left: 5px;
     font-size:19px;
     border-left:solid 1px black ;
-    color:#0935f8;
+    color:#5a0e0c;
 }
 .clearfix .li button a:hover, #login h5{
    color: black;
 }
+
 .footer{
-    position: absolute;
-    bottom:0;
-    width: 100%;
-    height: 60px;
-    background-color: turquoise;
+    background-color: rgb(51, 40, 40);
+    color: white;
+}
+.content_footer{
+    display: flex;
+    width: 80%;
+    margin:auto;
+    
+}
+.content_footer div{
+    width: 20%;
+    margin-right: 50px;
+}
+h3{
+    margin: 10px;
+    text-decoration: underline;
+}
+.search {
+    width:80%;
+    margin: auto;
+    padding: 0px;
+    background: rgba(239, 239, 239, 0.96);
 }
