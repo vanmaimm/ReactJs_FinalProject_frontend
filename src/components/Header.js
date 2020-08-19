@@ -8,7 +8,7 @@ import ChangePassword from "./ChangePassword.js";
 import TyperoomDetail from "./TyperoomDetail.js";
 import Booking from "./Booking";
 import Home from "./Home";
-import News from "./News";
+import Contact from "./Contact";
 
 
 class Header extends Component {
@@ -74,9 +74,6 @@ class Header extends Component {
                 this.state.typerooms.map((typeroom,i)=>
                 <li> <a href={"/chi-tiet/"+typeroom.id} >  {typeroom.name}</a></li>
                 )}
-                {/* <li>
-                  <Link to="/news"></Link>
-                </li> */}
                 <li>
                   <Link to="/contact">Liên hệ</Link>
                 </li>
@@ -129,15 +126,15 @@ class Header extends Component {
           <Route path="/dat-phong">
             <Booking />
           </Route>
-          <Route path="/news">
-            <News />
+          <Route path="/contact">
+            <Contact />
           </Route>
         </Switch>
         <div className='footer'>
         <div className="content_footer">
         <div>
           <h3>Về chúng tôi</h3>
-          <p>Khách sạn Vian Hotel với tiêu chuẩn 3 sao, công suất thiết kế 30 phòng, thang máy mạ vàng vip, gồm 2 sảnh đón khách, đạt chuẩn cùng đội ngũ nhân viên bản địa giàu kinh nghiệm ở vị trí đắc địa giữa trung tâm thành phố Đà Nẵng.</p>
+          <p>Khách sạn Vian Hotel với tiêu chuẩn 3 sao, công suất thiết kế phòng sang trọng, đạt chuẩn cùng đội ngũ nhân viên bản địa giàu kinh nghiệm ở vị trí đắc địa giữa trung tâm thành phố Đà Nẵng.</p>
         </div>
         <div>
           <h3>Liên hệ</h3>

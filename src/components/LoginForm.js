@@ -29,9 +29,17 @@ class LoginForm extends Component{
             return response.json();
         }).then((response) => {
             console.log(response);
-            localStorage.setItem("user",response.user_id);
-            alert("Ban da dang nhap thanh cong!");
-            this.props.history.push('/');
+            if(response==400){
+                alert("username or password is wrong!");
+                document.getElementById('username').value="";
+                document.getElementById('password').value="";
+            }else{
+                localStorage.setItem("user",response.user_id);
+                alert("Ban da dang nhap thanh cong!");
+                this.props.history.push('/');
+                window.location.reload(); 
+            }
+            
         });
        
     }
@@ -39,18 +47,20 @@ class LoginForm extends Component{
     render(){
 
         return(
+            <div className="background" >
             <div className="loginbox">
                 
                 <h1>Login Here</h1>
                 <form onSubmit = {this.onLogin}>
                     <p>Username</p>
-                    <input type="text" name="username" placeholder="Enter Username"/>
+                    <input type="text" name="username" id="username" placeholder="Enter Username"/>
                     <p>Password</p>
-                    <input type="password" name="password" placeholder="Enter Password"/>
+                    <input type="password" name="password" id="password" placeholder="Enter Password"/>
                     <input type="submit"  name="" value="Login"/>
                     <a href="#">Lost your password?</a><br/>
                     <Link to="/signin">Đăng ký tại đây!</Link>
                 </form>
+            </div>
             </div>
         )
     }

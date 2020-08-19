@@ -9,6 +9,7 @@ class TyperoomDetail extends Component {
     var id = this.props.match.params.typeroom_id;
     this.state = {
       infor: [],
+      typerooms:[]
     };
     this.getInfor(id);
   }
@@ -63,14 +64,6 @@ class TyperoomDetail extends Component {
           {infor.description}
         </div>
         <br></br>
-        {/* <div className='phong_khac'>
-          <div>
-            <a href={"/chi-tiet/1"} >
-            <img src={"http://127.0.0.1:8000/storage/" + infor.image}></img>
-            <h3>{infor.name}</h3>
-            </a>
-          </div>
-        </div> */}
       </div>
     );
   }

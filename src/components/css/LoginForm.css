@@ -6,7 +6,9 @@ body{
 	background-position: center;
 	font-family: sans-serif;
 }
-
+.background{
+	background-image: url('/Image/img.jpg');
+}
 .loginbox{
 	/* background-image: src("/frontend-vianhotel/public/Image/img.jpg"); */
 	width: 500px;

@@ -8,16 +8,11 @@ class Booking extends Component {
   //   }
   constructor() {
     super();
-    var date1 = new Date("07/30/2019"); 
-    var date2 = new Date("09/03/2019"); 
-    var Difference_In_Time = date2.getTime() - date1.getTime(); 
-    var Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24); 
     this.state = {
       arrival: "",
       checkout: "",
       number_person: "",
       typerooms: [],
-      a:Difference_In_Days
     };
   
 
@@ -47,6 +42,7 @@ class Booking extends Component {
     var arrival = new Date(event.target.value); 
     this.setState({
       [event.target.name]: arrival,
+      [event.target.name]: event.target.value,
     });
   }
   handleChange1(event) {
